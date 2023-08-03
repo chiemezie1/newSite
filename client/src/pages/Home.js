@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
+import NavBar from "../components/NavBar";
+import NewsBox from "../components/NewsBox";
 
 function Home() {
   return (
     <div>
-        <div className='logo'>Logo</div>
-        
+      <NavBar />
+      <NewsBox />
     </div>
-
   );
 }
 
