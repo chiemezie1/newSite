@@ -60,7 +60,7 @@ function Register() {
           name="password"
           placeholder="Password"
           value={password}
-          onChange={(ev) => setPassword()}
+          onChange={(ev) => setPassword(ev.target.value)}
         />
 
         <button type="submit">Register</button>
