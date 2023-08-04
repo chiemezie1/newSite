@@ -13,30 +13,26 @@ const UserSchema = new Schema({
     fristname: {
         type: String,
         required: true,
-        unique: true,
         min: 4,
         max: 20
     },
     lastname: {
         type: String,
         required: true,
-        unique: true,
         min: 4,
         max: 20
     },
     email: {
         type: String,
         required: true,
-        unique: true,
         min: 4,
         max: 20
     },
     password: {
         type: String,
         required: true,
-        unique: true,
-        min: 4,
-        max: 20
+        min: 5,
+        max: 50
     }
 });
 
