@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const User = require('./models/User.js');
 require('dotenv').config();
 
 
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection string and options
-const mongoURI = process.env.MONGO_URI;
+const mongoURI = "mongodb+srv://emezie:emezie80@cluster0.vsbd9sy.mongodb.net/?retryWrites=true&w=majority" //process.env.MONGO_URI;
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -22,18 +23,17 @@ mongoose.connect(mongoURI, options)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) =>  {
   const { username, firstname, lastname, email, password } = req.body;
-  // In a production environment, avoid sending the password in the response
-  res.json({
-    requestData: {
-      username,
+  const userDoc = await User.create(
+    username,
       firstname,
       lastname,
       email,
-      password,
-    }
-  });
+      password
+  );
+
+  res.json(userDoc);
 });
 
 const PORT = 4000;
