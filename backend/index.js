@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection string and options
-const mongoURI = "mongodb+srv://emezie:emezie80@cluster0.vsbd9sy.mongodb.net/?retryWrites=true&w=majority" //process.env.MONGO_URI;
+const mongoURI = process.env.MONGO_URI;
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
