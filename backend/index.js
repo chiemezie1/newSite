@@ -1,9 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const User = require('./models/User.js');
-require('dotenv').config();
-
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const User = require("./models/User.js");
+require("dotenv").config();
 
 const app = express();
 
@@ -19,21 +18,27 @@ const options = {
 };
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, options)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+mongoose
+  .connect(mongoURI, options)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-app.post('/register', async (req, res) =>  {
+app.post("/register", async (req, res) => {
   const { username, firstname, lastname, email, password } = req.body;
-  const userDoc = await User.create({
-    username,
+  try {
+    const userDoc = await User.create({
+      username,
       firstname,
       lastname,
       email,
-      password
-});
+      password,
+    });
 
-  res.json(userDoc);
+    res.json(userDoc);
+
+  } catch (err) {
+    res.status(400).json(err)
+   }
 });
 
 const PORT = 4000;

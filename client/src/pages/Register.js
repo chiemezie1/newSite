@@ -2,26 +2,34 @@ import React, { useState } from "react";
 
 function Register() {
   const [username, setUsername] = useState("");
-  const [firstname, setFirstname] = useState(""); 
+  const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   async function register(ev) {
     ev.preventDefault();
-    await fetch("http://localhost:4000/register", {
+    const respones = await fetch("http://localhost:4000/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: username,
-        firstname: firstname, 
+        firstname: firstname,
         lastname: lastname,
         email: email,
         password: password,
       }),
     });
+
+    if (respones.status === 200 || 204) {
+      alert("You Successful registered");
+      
+    } else {
+      alert("Registration failed");
+    }
+
   }
 
   return (
@@ -37,9 +45,9 @@ function Register() {
         <input
           type="text"
           name="firstname"
-          placeholder="FirstName" 
-          value={firstname} 
-          onChange={(ev) => setFirstname(ev.target.value)} 
+          placeholder="FirstName"
+          value={firstname}
+          onChange={(ev) => setFirstname(ev.target.value)}
         />
         <input
           type="text"
