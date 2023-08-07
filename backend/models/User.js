@@ -38,4 +38,4 @@ const UserSchema = new Schema({
 
 const userModel = model('User', UserSchema);
 
-model.exports = userModel;
+module.exports = userModel;
