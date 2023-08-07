@@ -87,6 +87,16 @@ mongoose
   });
   
 
+  app.get('/profile', (req, res) => {
+    const {token} = req.cookies;
+    jwt.verify(token, JwtSecret, {}, (err, infor) => {
+      if (err) throw err;
+      res.json(infor)
+    }); 
+  })
+
+
+
 
 const PORT = 4000;
 app.listen(PORT, () => {

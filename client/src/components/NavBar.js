@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
+  const [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/profile", {
+      credentials: "include",
+    }).then((response) => {
+      response.json().then((userDetails) => {
+        setUsername(userDetails.username);
+      });
+    });
+  }, []);
+
   return (
     <navbar>
       <div className="navbar">
@@ -16,9 +28,18 @@ const Navbar = () => {
           />
         </div>
         <div className="navLinks">
-          <Link to="/about">About</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          {username && (
+            <>
+              <Link to="/create">Create Post</Link>
+            </>
+          )}
+          {!username && (
+            <>
+              <Link to="/about">About</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
         </div>
       </div>
     </navbar>
