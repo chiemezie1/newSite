@@ -25,13 +25,13 @@ mongoose.connect(mongoURI, options)
 
 app.post('/register', async (req, res) =>  {
   const { username, firstname, lastname, email, password } = req.body;
-  const userDoc = await User.create(
+  const userDoc = await User.create({
     username,
       firstname,
       lastname,
       email,
       password
-  );
+});
 
   res.json(userDoc);
 });

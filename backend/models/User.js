@@ -10,7 +10,7 @@ const UserSchema = new Schema({
         min: 4,
         max: 20
     },
-    fristname: {
+    firstname: {
         type: String,
         required: true,
         min: 4,
