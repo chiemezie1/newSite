@@ -52,6 +52,31 @@ mongoose
       res.status(400).json(err);
     }
   });
+
+
+  app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+      const userDetails = await User.findOne({ username });
+      if (!userDetails) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      const hash = userDetails.password;
+      const isPasswordMatch = await bcrypt.compare(password, hash);
+  
+      if (isPasswordMatch) {
+        // Passwords match, user is authenticated
+        res.json(userDetails);
+      } else {
+        // Passwords do not match, authentication failed
+        res.status(401).json({ error: 'Authentication failed' });
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      res.status(500).json({ error: 'An error occurred during login' });
+    }
+  });
   
 
 
