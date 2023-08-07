@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 function Register() {
-  
   const [username, setUsername] = useState("");
-  const [fristname, setFristname] = useState("");
+  const [firstname, setFirstname] = useState(""); 
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   async function register(ev) {
     ev.preventDefault();
     await fetch("http://localhost:4000/register", {
@@ -16,7 +16,7 @@ function Register() {
       },
       body: JSON.stringify({
         username: username,
-        fristname: fristname,
+        firstname: firstname, 
         lastname: lastname,
         email: email,
         password: password,
@@ -36,10 +36,10 @@ function Register() {
         />
         <input
           type="text"
-          name="fristname"
-          placeholder="FristName"
-          value={fristname}
-          onChange={(ev) => setFristname(ev.target.value)}
+          name="firstname"
+          placeholder="FirstName" 
+          value={firstname} 
+          onChange={(ev) => setFirstname(ev.target.value)} 
         />
         <input
           type="text"
