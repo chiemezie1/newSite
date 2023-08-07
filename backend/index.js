@@ -3,16 +3,19 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const User = require("./models/User.js");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({credentials:true, origin:'http://localhost:3000'}));
 
 app.use(express.json());
 
 // MongoDB connection string and options
 const mongoURI = process.env.MONGO_URI;
+const JwtSecret = process.env.JWT_SECRET;
+
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -66,8 +69,13 @@ mongoose
       const isPasswordMatch = await bcrypt.compare(password, hash);
   
       if (isPasswordMatch) {
-        // Passwords match, user is authenticated
-        res.json(userDetails);
+        
+        jwt.sign({ username, id: userDetails._id }, JwtSecret, { }, function(err, token) {
+          if(err) throw err;
+          res.cookie('token', token).json('okay');
+          // console.log(token);
+        });
+
       } else {
         // Passwords do not match, authentication failed
         res.status(401).json({ error: 'Authentication failed' });
