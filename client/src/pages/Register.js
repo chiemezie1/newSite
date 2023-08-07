@@ -9,28 +9,44 @@ function Register() {
 
   async function register(ev) {
     ev.preventDefault();
-    const respones = await fetch("http://localhost:4000/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        password: password,
-      }),
-    });
-
-    if (respones.status === 200 || 204) {
-      alert("You Successful registered");
-      
-    } else {
-      alert("Registration failed");
+  
+    try {
+      const response = await fetch("http://localhost:4000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        
+        body: JSON.stringify({
+          username: username,
+          firstname: firstname,
+          lastname: lastname,
+          email: email,
+          password: password,
+        }),
+      });
+  
+      if (response.ok) {
+        // Registration was successful (status code 200 or 204)
+        alert("You have successfully registered!");
+      } else if (response.status === 400) {
+        // Bad Request - The server couldn't understand the request.
+        // This may occur if the data sent to the server is invalid.
+        const errorData = await response.json();
+        alert(`Registration failed: ${errorData.message}`);
+      } else {
+        // Other non-successful status codes (e.g., 404, 500, etc.)
+        // Handle other potential error cases here
+        alert("Registration failed: An unknown error occurred.");
+      }
+    } catch (error) {
+      // Network error or other unexpected issues
+      console.error("Error during registration:", error);
+      alert("Registration failed: An unexpected error occurred.");
     }
-
   }
+  
 
   return (
     <div>
