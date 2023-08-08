@@ -4,13 +4,14 @@ const cors = require("cors");
 const User = require("./models/User.js");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 require("dotenv").config();
 
 const app = express();
-
 app.use(cors({credentials:true, origin:'http://localhost:3000'}));
 
 app.use(express.json());
+app.use(cookieParser());
 
 // MongoDB connection string and options
 const mongoURI = process.env.MONGO_URI;
@@ -72,8 +73,8 @@ mongoose
         
         jwt.sign({ username, id: userDetails._id }, JwtSecret, { }, function(err, token) {
           if(err) throw err;
-          res.cookie('token', token).json('okay');
-          // console.log(token);
+          res.cookie('token', token, { path: '/' }).json('okay');
+           console.log(token);
         });
 
       } else {
@@ -88,12 +89,13 @@ mongoose
   
 
   app.get('/profile', (req, res) => {
-    const {token} = req.cookies;
+    const { token } = req.cookies;
+    console.log('Token:', token);
     jwt.verify(token, JwtSecret, {}, (err, infor) => {
       if (err) throw err;
-      res.json(infor)
+      res.json(infor);
     }); 
-  })
+  });
 
 
 
