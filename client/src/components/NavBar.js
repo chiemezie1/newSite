@@ -16,6 +16,30 @@ const Navbar = () => {
     });
   }, []);
 
+  // useEffect(() => {
+  //   // Get the token from cookies
+  //   const cookies = document.cookie.split(';');
+  //   let token = '';
+  //   cookies.forEach(cookie => {
+  //     const [name, value] = cookie.trim().split('=');
+  //     if (name === 'token') {
+  //       token = value;
+  //     }
+  //   });
+  
+  //   // Make the profile request with the token in headers
+  //   fetch("http://localhost:4000/profile", {
+  //     credentials: "include",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   }).then((response) => {
+  //     response.json().then((userDetails) => {
+  //       setUsername(userDetails.username);
+  //     });
+  //   });
+  // }, []);
+  
 
 
   return (
