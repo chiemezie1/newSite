@@ -16,6 +16,8 @@ const Navbar = () => {
     });
   }, []);
 
+
+
   return (
     <navbar>
       <div className="navbar">

@@ -71,9 +71,9 @@ mongoose
   
       if (isPasswordMatch) {
         
-        jwt.sign({ username, id: userDetails._id }, JwtSecret, { }, function(err, token) {
+        jwt.sign({ username, id: userDetails._id }, JwtSecret, {}, function(err, token) {
           if(err) throw err;
-          res.cookie('token', token, { path: '/' }).json('okay');
+          res.cookie('token', token, { path: '/', domain: 'localhost' }).json('okay');
            console.log(token);
         });
 
@@ -89,7 +89,8 @@ mongoose
   
 
   app.get('/profile', (req, res) => {
-    const { token } = req.cookies;
+    const { token } = req.signedCookies;
+    console.log(req.cookies);
     console.log('Token:', token);
     jwt.verify(token, JwtSecret, {}, (err, infor) => {
       if (err) throw err;
