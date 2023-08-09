@@ -7,39 +7,22 @@ const Navbar = () => {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
-      credentials: "include",
-    }).then((response) => {
-      response.json().then((userDetails) => {
-        setUsername(userDetails.username);
+    fetch('http://localhost:4000/profile', {
+      credentials: 'include',
+    }).then(response => {
+      response.json().then(userDetails => {
+        setUserInfo(userDetails);
       });
     });
   }, []);
 
-  // useEffect(() => {
-  //   // Get the token from cookies
-  //   const cookies = document.cookie.split(';');
-  //   let token = '';
-  //   cookies.forEach(cookie => {
-  //     const [name, value] = cookie.trim().split('=');
-  //     if (name === 'token') {
-  //       token = value;
-  //     }
-  //   });
-  
-  //   // Make the profile request with the token in headers
-  //   fetch("http://localhost:4000/profile", {
-  //     credentials: "include",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((response) => {
-  //     response.json().then((userDetails) => {
-  //       setUsername(userDetails.username);
-  //     });
-  //   });
-  // }, []);
-  
+  function logout() {
+    fetch('http://localhost:4000/logout', {
+      credentials: 'include',
+      method: 'POST',
+    });
+    setUserInfo(null);
+  }
 
 
   return (
