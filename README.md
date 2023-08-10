@@ -50,7 +50,7 @@ Welcome to the frontend repository of the Blogging Application. This application
 
 ## **Screenshots**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/311b3501-40f9-470d-89f6-d3983dd3faed/Untitled.png)
+![Untitled](https://github.com/chiemezie1/newSite/blob/main/client/public/Screenshot%202023-08-10%20202229.png)
 
 !https://chat.openai.com/c/screenshots/screenshot2.png
 
