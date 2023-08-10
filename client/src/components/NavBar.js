@@ -4,7 +4,7 @@ import "./NavBar.css";
 import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
-  const [username, setUsername] = useState(null);
+  const [details, userDetails] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:4000/profile', {
@@ -37,12 +37,12 @@ const Navbar = () => {
           />
         </div>
         <div className="navLinks">
-          {username && (
+          {details && (
             <>
               <Link to="/create">Create Post</Link>
             </>
           )}
-          {!username && (
+          {!details && (
             <>
               <Link to="/about">About</Link>
               <Link to="/login">Login</Link>
