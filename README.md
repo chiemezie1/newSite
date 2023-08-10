@@ -41,7 +41,7 @@ Welcome to the frontend repository of the Blogging Application. This application
     
 4. Start the development server:
     
-    ```sql
+    ```bash
     npm start
     
     ```
@@ -51,8 +51,6 @@ Welcome to the frontend repository of the Blogging Application. This application
 ## **Screenshots**
 
 ![Untitled](https://github.com/chiemezie1/newSite/blob/main/client/public/Screenshot%202023-08-10%20202229.png)
-
-!https://chat.openai.com/c/screenshots/screenshot2.png
 
 ## **Contributing**
 
@@ -96,7 +94,7 @@ Welcome to the backend repository of the Blogging Application. This backend comp
     
 3. Install the project dependencies:
     
-    ```
+    ```bash
     
     npm install
     
