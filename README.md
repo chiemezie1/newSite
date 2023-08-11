@@ -50,7 +50,7 @@ Welcome to the frontend repository of the Blogging Application. This application
 
 ## **Screenshots**
 
-![Untitled](https://github.com/chiemezie1/newSite/blob/main/client/public/Screenshot%202023-08-10%20202229.png)
+![HOME PAGE](https://github.com/chiemezie1/newSite/blob/main/client/public/Screenshot%202023-08-10%20202229.png)
 
 ## **Contributing**
 
