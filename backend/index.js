@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const User = require("./models/User.js");
 const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors({credentials:true, origin:'http://localhost:3000'}));
 
 app.use(express.json());
+app.use(cookieParser());
 
 // MongoDB connection string and options
 const mongoURI = process.env.MONGO_URI;

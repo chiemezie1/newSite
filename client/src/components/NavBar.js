@@ -4,25 +4,25 @@ import "./NavBar.css";
 import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
-  const [details, userDetails] = useState(null);
+  const [username, setUsername] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:4000/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userDetails => {
-        setUserInfo(userDetails);
+        setUsername(userDetails.username);
       });
     });
   }, []);
 
-  function logout() {
-    fetch('http://localhost:4000/logout', {
-      credentials: 'include',
-      method: 'POST',
-    });
-    setUserInfo(null);
-  }
+  // function logout() {
+  //   fetch('http://localhost:4000/logout', {
+  //     credentials: 'include',
+  //     method: 'POST',
+  //   });
+  //   setUsername(null);
+  // }
 
 
   return (
@@ -37,12 +37,12 @@ const Navbar = () => {
           />
         </div>
         <div className="navLinks">
-          {details && (
+          {username && (
             <>
               <Link to="/create">Create Post</Link>
             </>
           )}
-          {!details && (
+          {!username && (
             <>
               <Link to="/about">About</Link>
               <Link to="/login">Login</Link>
