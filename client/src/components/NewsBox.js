@@ -3,16 +3,14 @@ import man from "../assets/man.jpg";
 
 function NewsBox() {
   return (
-    <div>
+    <div className="news-container" >
       <h1> Man's Unyielding Struggle to Make Ends Meet </h1>
       <p>By John Anderson</p>
       <p>June 17, 2022</p>
-      <div className="news_box">
-        <div className="img_box">
-          <img src={man} alt="image picture" className="image_box" />
-        </div>
-
-        <div className="news_body">
+      <div className="news-box">
+          <img src={man} alt="image picture" className="image-box" />
+   
+        <div className="news-body">
           <p>
             From the earliest days of human existence to the complexities of the
             modern world, the relentless pursuit of making ends meet has been an
