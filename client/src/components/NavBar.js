@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
 import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
@@ -30,7 +29,7 @@ const Navbar = () => {
       <div className="navbar">
         <div className="contenerlogo">
           <img
-            className="logo"
+            classNameName="logo"
             onClick={() => (window.location.href = "/")}
             src={logo}
             alt="Logo"
@@ -39,7 +38,8 @@ const Navbar = () => {
         <div className="navLinks">
           {username && (
             <>
-              <Link to="/create">Create Post</Link>
+              <Link to="/createPost">Create Post</Link>
+              <Link to="/logout">Log out</Link>
             </>
           )}
           {!username && (

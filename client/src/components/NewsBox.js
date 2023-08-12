@@ -1,5 +1,4 @@
 import React from "react";
-import "./NewsBox.css";
 import man from "../assets/man.jpg";
 
 function NewsBox() {
