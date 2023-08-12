@@ -47,25 +47,53 @@ main{
   max-width: 960px;
   margin: 0 auto;
 }
+
+
+img.logo {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+
+}
+
 .navbar{
   display:flex;
   justify-content:space-between;
-  margin-top: 20px;
   margin-bottom: 50px;
+  padding: 10px;
   align-items: center;
+  background-color: aliceblue;
+  border-radius: 1.2em;
 }
-.navbar a{
-  text-decoration:none;
-  color: inherit;
+.nav-link {
+  display: flex;
+  gap: 10px;
 }
-.navbar a.logo{
-  font-weight: bold;
-  font-size: 1.5rem;
+
+.nav-btn {
+  text-decoration: none;
+  display: inline-block;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: #3D3D3D;
+  background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+  border: none;
+  box-shadow: 0px 0.5px 1px rgba(0, 0.2, 0, 0.1);
+  user-select: none;
 }
-.navbar nav{
-  display:flex;
-  gap: 24px;
+
+.nav-btn:hover {
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(214, 219, 230, 0.5);
 }
+
+.nav-link a:focus {
+  background-image: linear-gradient(#f7f8fa ,#b4c5df);
+  outline: 0;
+
+}
+
 
 div.post{
   display: grid;

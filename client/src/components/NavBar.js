@@ -29,24 +29,23 @@ const Navbar = () => {
       <div className="navbar">
         <div className="contenerlogo">
           <img
-            classNameName="logo"
+            className="logo"
             onClick={() => (window.location.href = "/")}
             src={logo}
             alt="Logo"
           />
         </div>
-        <div className="navLinks">
+        <div className="nav-link">
           {username && (
             <>
-              <Link to="/createPost">Create Post</Link>
-              <Link to="/logout">Log out</Link>
+              <Link className="nav-btn" to="/createPost">Create Post</Link>
+              <Link className="nav-btn" to="/logout">Log out</Link>
             </>
           )}
           {!username && (
             <>
-              <Link to="/about">About</Link>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
+              <Link className="nav-btn" to="/login">Login</Link>
+              <Link className="nav-btn" to="/register">Register</Link>
             </>
           )}
         </div>
