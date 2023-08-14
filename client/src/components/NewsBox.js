@@ -3,15 +3,15 @@ import man from "../assets/man.jpg";
 
 function NewsBox() {
   return (
-    <div className="news-container" >
+    <div className="news-container">
       <h1> Man's Unyielding Struggle to Make Ends Meet </h1>
       <p>By John Anderson</p>
       <p>June 17, 2022</p>
       <div className="news-box">
-        <di>
+        <div>
           <img src={man} alt="image picture" className="image-box" />
-        </di>
-      
+        </div>
+
         <div className="news-body">
           <p>
             From the earliest days of human existence to the complexities of the
