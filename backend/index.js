@@ -75,11 +75,9 @@ mongoose
         jwt.sign({ username, id: userDetails._id }, JwtSecret, { }, function(err, token) {
           if(err) throw err;
           res.cookie('token', token).json('okay');
-          // console.log(token);
         });
 
       } else {
-        // Passwords do not match, authentication failed
         res.status(401).json({ error: 'Authentication failed' });
       }
     } catch (error) {
